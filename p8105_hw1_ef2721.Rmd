@@ -1,7 +1,7 @@
 ---
 title: "p8105_hw_ef2721"
 author: "Erfan Faridmoayer"
-output: html_document
+output: github_document
 date: "2022-09-23"
 ---
 
