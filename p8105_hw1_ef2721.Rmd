@@ -6,5 +6,9 @@ date: "2022-09-23"
 ---
 
 ```{r, echo=FALSE} 
+
 data("penguins", package = "palmerpenguins")
+
+## This dataset includes information about penguins' species, island of origin, gender, bill-length, bill-depth, flipper length, mass and year of birth
+
 ```
