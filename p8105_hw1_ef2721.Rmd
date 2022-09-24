@@ -2,13 +2,21 @@
 title: "p8105_hw_ef2721"
 author: "Erfan Faridmoayer"
 output: github_document
-date: "2022-09-23"
+date: "Fall 2022"
 ---
 
-```{r, echo=FALSE} 
-
-data("penguins", package = "palmerpenguins")
-
-## This dataset includes information about penguins' species, island of origin, gender, bill-length, bill-depth, flipper length, mass and year of birth
-
+```{r, include=FALSE} 
+library(tidyverse)
 ```
+
+## Problem 1
+
+This is a code chunk for importing the data about penguins.
+
+```{r} 
+data("penguins", package = "palmerpenguins")
+```
+
+This dataset includes information about penguins' species, island of origin, gender, bill-length, bill-depth, flipper length, mass and year of birth.
+
+There are a total of **`r nrow(penguins)`** in this collection, with **`r ncol(penguins)`** collected variables.
