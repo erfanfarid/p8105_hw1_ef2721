@@ -7,7 +7,7 @@ date: "Fall 2022"
 
 
 ```{r}
-# Before starting the code, introduced two libraries, and made sure code chuncks are visible.
+# Before starting the code, introduced two libraries, and made sure code chunks are visible in the github output.
 
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -26,7 +26,7 @@ f = penguins$flipper_length_mm
 
 
 ```{r}
-# I first wanted to change the column names for table presentation
+# I first wanted to change the column names for better table presentation
 peng_df = penguins
 
 colnames(peng_df)[colnames(peng_df) == "species"] = "Species"
@@ -38,7 +38,7 @@ colnames(peng_df)[colnames(peng_df) == "body_mass_g"] = "Body Mass (g)"
 colnames(peng_df)[colnames(peng_df) == "sex"] = "Sex"
 colnames(peng_df)[colnames(peng_df) == "year"] = "Year"
 
-# Used the gtsummary library to showcase the dataset description in a table, with statistical variables
+# Used the gtsummary library to showcase the dataset description in a table, with statistical variables. In doing so, removed the NA variables using the 'missing' function.
 tab1 = tbl_summary(peng_df, by = Island, missing ="no")
 tab1
 ```
@@ -48,8 +48,36 @@ The table above is a desciption of the dataset based on the penguins' islands.
 Here is some more info about our dataset:
 
 * This dataset includes information about penguins' species, island of origin, gender, bill-length, bill-depth, flipper length, mass, and year of data collection.
-* There are a total of **`r nrow(penguins)`** penguins in this collection, with **`r ncol(penguins)`** collected variables. 
-* The mean flipper length for these penguins was **`r mean(f, na.rm=TRUE)`**.
+* There are a total of **`r nrow(penguins)`** penguins in this collection, with **`r ncol(penguins)`**  variables collected. 
+* The mean flipper length for these penguins was **`r mean(f, na.rm=TRUE)` mm**.
+
+#### Scatterplot
+
+The code chunk below creates a dataframe and uses it to make a scatterplot:
+```{r}
+# Here I wanted to make a scatterplot as instructed. First, I introduced a dataframe on which variables to include
+
+plot_df = tibble(
+    a = penguins$bill_length_mm,
+    b = penguins$flipper_length_mm,
+    c = penguins$species
+)
+
+#Here, I coded for the scatterplot using the plot_df
+
+gp = ggplot(
+    plot_df, 
+    aes(x = a, y = b, color = c)) + 
+    geom_point() +
+    labs(title = "Comparing Bill Length (mm) and Flippler Length (mm) based on Species", color = "Species") +
+    xlab("Bill Length (mm)") +
+    ylab("Flipper Length (mm)")
+gp
+
+# I saved the scatterplot in a folder in my directory
+ggsave
+
+```
 
 
 
