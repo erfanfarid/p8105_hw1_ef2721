@@ -51,6 +51,7 @@ Here is some more info about our dataset:
 * There are a total of **`r nrow(penguins)`** penguins in this collection, with **`r ncol(penguins)`**  variables collected. 
 * The mean flipper length for these penguins was **`r mean(f, na.rm=TRUE)` mm**.
 
+
 #### Scatterplot
 
 The code chunk below creates a dataframe and uses it to make a scatterplot:
@@ -66,8 +67,8 @@ plot_df = tibble(
 #Here, I coded for the scatterplot using the plot_df
 
 gp = ggplot(
-    plot_df, 
-    aes(x = a, y = b, color = c)) + 
+    plot_df,
+    aes(x = a, y = b, color = c)) +
     geom_point() +
     labs(title = "Comparing Bill Length (mm) and Flippler Length (mm) based on Species", color = "Species") +
     xlab("Bill Length (mm)") +
@@ -82,3 +83,20 @@ ggsave
 
 
 
+## Problem 2
+
+This is a code chunk using normal sampling and character vectors.
+```{r}
+
+# I introduced a dataframe to include a tibble with the requested characters.
+
+prob2_df = tibble(
+    norm_samp = rnorm(10, mean = 5),
+    norm_samp_pos = norm_samp > 0,
+    vec_char = c("I", "would", "like", "to", "make", "a", "character", "vector", "plot", "here"),
+    vec_factor = factor(c("blue", "blue", "red", "white", "red", "blue", "white", "red", "blue", "white"))
+)
+
+```
+
+The mean for a sample of 10 with normal distribution and a mean of 5 is **`r mean(pull(prob2_df, norm_samp))`**, and for the positive sample of 10 with normal distribution is **`r mean(pull(prob2_df, norm_samp_pos))`**. The means for the vector characters and factors came out as  **`r mean(pull(prob2_df, vec_char))`** and **`r mean(pull(prob2_df, vec_factor))`**, respectively. The latter did not result in a value as the characters were not numeric.
