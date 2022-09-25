@@ -100,3 +100,16 @@ prob2_df = tibble(
 ```
 
 The mean for a sample of 10 with normal distribution and a mean of 5 is **`r mean(pull(prob2_df, norm_samp))`**, and for the positive sample of 10 with normal distribution is **`r mean(pull(prob2_df, norm_samp_pos))`**. The means for the vector characters and factors came out as  **`r mean(pull(prob2_df, vec_char))`** and **`r mean(pull(prob2_df, vec_factor))`**, respectively. The latter did not result in a value as the characters were not numeric.
+
+
+This is a code chunk with attempt to convert variables:
+
+```{r}
+mean(as.numeric(pull(prob2_df, vec_char)))
+mean(as.numeric(pull(prob2_df, vec_factor)))
+```
+
+It can be seen from the code chunk above that a character vector still could not be converted to a numeric output, whereas a factor vector lead to a numerical mean of **`r mean(as.numeric(pull(prob2_df, vec_factor)))`**.
+
+
+
